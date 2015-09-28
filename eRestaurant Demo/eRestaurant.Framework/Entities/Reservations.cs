@@ -9,6 +9,16 @@ namespace eRestaurant.Framework.Entities
 {
     public class Reservations
     {
+        #region Constants (for BLL validation)
+        // constants for valid reservation status values
+        // A = arrived; B = Booked; C = Complete; N = No show; X = Cancelled
+        public const string Arrived = "A";
+        public const string Booked = "B";
+        public const string Complete = "C";
+        public const string NoShow = "N";
+        public const string Cancelled = "X";
+        #endregion
+
         [Key]
         public int ReservationID { get; set; }
         public string CustomerName { get; set; }
