@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eRestaurant.Framework.Entities
 {
-    public class Tables
+    public class Table
     {
         [Key]
         public int TableID { get; set; }
@@ -19,12 +19,12 @@ namespace eRestaurant.Framework.Entities
         public int Capacity { get; set; }
         public bool Available { get; set; }
         // Navigation Properties
-        public virtual ICollection<Reservations> Reservations { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
 
-        public Tables()
+        public Table()
         {
             Available = true;
-            Reservations = new HashSet<Reservations>();
+            Reservations = new HashSet<Reservation>();
         }
     }
 }

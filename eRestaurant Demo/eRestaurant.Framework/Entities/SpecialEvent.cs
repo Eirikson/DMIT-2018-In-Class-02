@@ -19,13 +19,13 @@ namespace eRestaurant.Framework.Entities
         public string Description { get; set; }
         public bool Active { get; set; }
         // Navigation Properties
-        public virtual ICollection<Reservations> Reservations { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
 
         public SpecialEvent()
         {
             Active = true;
             // To avoid null-reference errors for our navigation property
-            Reservations = new HashSet<Reservations>();
+            Reservations = new HashSet<Reservation>();
         }
     }
 }

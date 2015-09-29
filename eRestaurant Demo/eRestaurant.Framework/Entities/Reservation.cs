@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eRestaurant.Framework.Entities
 {
-    public class Reservations
+    public class Reservation
     {
         #region Constants (for BLL validation)
         // constants for valid reservation status values
@@ -35,7 +35,7 @@ namespace eRestaurant.Framework.Entities
         [StringLength(1)]
         public string EventCode { get; set; }
         // Navigation Properties
-        public virtual ICollection<Tables> Tables { get; set; }
+        public virtual ICollection<Table> Tables { get; set; }
         public virtual SpecialEvent SpecialEvent { get; set; }
     }
 }
