@@ -21,7 +21,7 @@ namespace eRestaurant.Framework.Entities
         public double CurrentCost { get; set; }
         public bool Active { get; set; }
 
-        []
+        
         public int? Calories { get; set; }
         public string Comment { get; set; }
         public int MenuCategoryID { get; set; }
