@@ -5,17 +5,54 @@
         <h1>Manage Special Events
             <span class="glyphicon glyphicon-glass"></span>
         </h1>
-    </div>
+    
 
     <!-- ObjectDataSource control to do underlying communication with BLL and my ListView control -->
 
-    <asp:ObjectDataSource ID="SpecialEventsDataSource" runat="server"
-        TypeName="eRestaurant.Framework.BLL.RestaurantAdminController"
-        SelectMethod="ListAllSpecialEvents"
-        DataObjectTypeName="eRestaurant.Framework.Entities.SpecialEvent">
-    </asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="SpecialEventsDataSource" runat="server"
+            TypeName="eRestaurant.Framework.BLL.RestaurantAdminController"
+            SelectMethod="ListAllSpecialEvents"
+            DataObjectTypeName="eRestaurant.Framework.Entities.SpecialEvent">
+        </asp:ObjectDataSource>
 
-    <asp:GridView ID="SpecialEventsGridView" runat="server"
-        DataSourceID="SpecialEventsDataSource"></asp:GridView>
+        <%--<asp:GridView ID="SpecialEventsGridView" runat="server"
+            DataSourceID="SpecialEventsDataSource"></asp:GridView>--%>
+        <asp:ListView ID="SpecialEventsListView" runat="server"
+            DataSourceId="SpecialEventsDataSource">
+            <LayoutTemplate>
+                <fieldset runat="server" id="itemPlaceholderContainer">
+                    <div runat="server" id="itemPlaceholder" />
+                </fieldset>
+            </LayoutTemplate>
+
+            <ItemTemplate>
+                <div>
+                    <asp:LinkButton runat="server" CommandName="Edit"
+                        ID="EditButton">
+                        Edit
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </asp:LinkButton>
+                    &nbsp;&nbsp;
+                    <asp:LinkButton runat="server" CommandName="Delete"
+                        ID="DeleteButton">
+                        Delete
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </asp:LinkButton>
+                    &nbsp;&nbsp;&nbsp;
+                    <asp:CheckBox Checked='<%# Eval("Active") %>'
+                        runat="server" ID="ActiveCheckBox"
+                        Enabled="false" Text="Active" />
+                    &mdash;
+                    <asp:Label ID="Label1" runat="server" AssociatedControlID="EventCodeData"
+                        CssClass="control-label">Event Code</asp:Label>
+                    <asp:Label ID="EventCodeData" runat="server"
+                        Text='<%# Eval("EventCode") %>' />
+                    &mdash;
+                    <asp:Label ID="DescriptionData" runat="server"
+                        Text='<%# Eval("Description") %>' />
+                </div>
+            </ItemTemplate>
+        </asp:ListView>
+    </div>
 </asp:Content>
 
