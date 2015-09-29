@@ -11,7 +11,7 @@ namespace eRestaurant.Framework.BLL
 {
     // Allows our class to be "discovered" by the ObjectDataSource controls in our website
     [DataObject]
-    public class ResaurantAdminController
+    public class RestaurantAdminController
     {
         // The ObjectDataSource control will do the background communicationb for CRUD
 
