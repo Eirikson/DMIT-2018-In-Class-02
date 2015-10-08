@@ -18,7 +18,8 @@
         <%--<asp:GridView ID="SpecialEventsGridView" runat="server"
             DataSourceID="SpecialEventsDataSource"></asp:GridView>--%>
         <asp:ListView ID="SpecialEventsListView" runat="server"
-            DataSourceId="SpecialEventsDataSource">
+            DataSourceId="SpecialEventsDataSource"
+            DataKeyName="EventCode">
             <LayoutTemplate>
                 <fieldset runat="server" id="itemPlaceholderContainer">
                     <div runat="server" id="itemPlaceholder" />
@@ -52,6 +53,55 @@
                         Text='<%# Eval("Description") %>' />
                 </div>
             </ItemTemplate>
+
+            <EditItemTemplate>
+                <div>
+                    <asp:LinkButton runat="server" CommandName="Update"
+                        Text="Update" ID="UpdateButton" />
+                    &nbsp;&nbsp;
+                    <asp:LinkButton runat="server" CommandName="Cancel"
+                        Text="Cancel" ID="CancelButton" />
+
+                    Event Code:
+                    <asp:TextBox runat="server" ID="EventCodeTextBox"
+                        Text='<%# Bind("EventCode") %>'
+                        Enabled="false" />
+
+                    Description:
+                    <asp:TextBox runat="server" ID="DescriptionTextBox"
+                        Text='<%# Bind("Description") %>' />
+                    <asp:CheckBox runat="server" ID="ActiveCheckBox"
+                        Checked='<%# %>'
+                </div>
+            </EditItemTemplate>
+            <InsertItemTemplate>
+                <div>
+                    <asp:LinkButton runat="server" ID="InsertButton" CommandName="Insert">
+                        Insert <span class="glyphicon glyphicon-plus"></span>
+                    </asp:LinkButton>
+                    &nbsp;&nbsp;
+
+                    <asp:LinkButton runat="server" ID="CancelButton" CommandName="Cancel">
+                        Clear <span class="glyphicon glyphicon-refresh"></span>
+                    </asp:LinkButton>
+                    &nbsp;&nbsp;&nbsp;
+
+                    <asp:CheckBox runat="server" ID="ActiveCheckBox" Text="Active"
+                        Checked='<%# Bind("Active") %>' />
+                    &mdash;
+
+                    <asp:Label ID="Label3" runat="server" CssClass="control-label"
+                        AssociatedControlID="EventCodeTextbox">Event Code</asp:Label>
+                    <asp:TextBox ID="EventCodeTextBox" runat="server"
+                        Text='<%# Bind("EventCode") %>' />
+                    &mdash;
+
+                    <asp:Label ID="Label4" runat="server" CssClass="control-label"
+                        AssociatedControlID="DescriptionTextBox">Description</asp:Label>
+                    <asp:TextBox ID="DescriptionTextBox" runat="server"
+                        Text='<%# Bind("Description") %>' />
+                </div>
+            </InsertItemTemplate>
         </asp:ListView>
     </div>
 </asp:Content>
